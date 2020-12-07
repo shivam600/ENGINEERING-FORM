@@ -1,0 +1,62 @@
+{% extends "home.html"  %}
+
+{% block content %} 
+<div class="table table-responsive">
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>fullname</td>
+            <td>first_name</td> 
+            <td>last_name</td>
+            <td>username</td> 
+            <td>address</td>
+            <td>college_name</td>
+            <td>stream</td>
+            <td>contact_no</td>          
+            <td>email</td>
+            <td>Edit/Delete</td>
+            
+            
+
+                       
+        </tr>
+    </thead>           
+    <tbody>
+        {% for students in show_student %}
+            <tr>
+                <td>{{students.fullname}}</td>
+                <td>{{students.user.first_name}}</td>
+                <td>{{students.user.last_name}}</td>                 
+                <td>{{students.user.username}}</td>             
+                <td>{{students.address}}</td>
+                <td>{{students.college_name}}</td>
+                <td>{{students.stream}}</td>
+                <td>{{students.contact_no}}</td>                                     
+                <td>{{students.user.email}}</td>
+                
+
+                
+            
+             
+                <td>
+                    <a href="{% url 'students_update' students.id %}" class="btn text secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>  
+                    </a>
+                    <form action="{% url 'students_delete' students.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+
+
+                    </form>
+                </td>
+                
+            </tr>             
+        {% endfor %}
+    </tbody>
+
+
+</table> 
+</div> 
+{% endblock content %}

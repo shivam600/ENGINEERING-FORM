@@ -1,0 +1,35 @@
+{% extends "home.html"  %}
+{% load crispy_forms_tags %} 
+{% block content %}
+<form action="" method="POST" autocomplete="off">
+    {% csrf_token %}
+    {{form|crispy}}
+    {{formu|crispy}}
+
+    <button type="submit" class="btn btn-sucess btn-block btn-lg"><i class="fas fa-user-shield"></i>submit</button>
+    
+</form>
+<div>
+    {% for message in messages %}
+    <h3> {{message}} </h3>
+    {% endfor %}   
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
